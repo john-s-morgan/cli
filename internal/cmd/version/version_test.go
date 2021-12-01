@@ -4,8 +4,10 @@
 package version
 
 import (
+	"fmt"
 	"testing"
 
+	"github.com/gobuffalo/cli/internal/runtime"
 	"github.com/gobuffalo/cli/internal/testhelpers"
 	"github.com/stretchr/testify/require"
 )
@@ -19,8 +21,16 @@ func TestVersion(t *testing.T) {
 		args    []string
 		content string
 	}{
-		{name: "Plain text", args: []string{"version"}, content: "version"},
-		{name: "JSON", args: []string{"version", "--json"}, content: "\"version\":"},
+		{
+			name:    "Plain text",
+			args:    []string{"version"},
+			content: fmt.Sprintf("version is: %s", runtime.Version),
+		},
+		{
+			name:    "JSON",
+			args:    []string{"version", "--json"},
+			content: `"version": "` + runtime.Version,
+		},
 	}
 
 	for _, tcase := range tcases {
