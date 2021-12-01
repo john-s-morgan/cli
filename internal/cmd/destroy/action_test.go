@@ -1,7 +1,7 @@
 //go:build integration
 // +build integration
 
-package destroy
+package destroy_test
 
 import (
 	"os"

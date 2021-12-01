@@ -1,7 +1,7 @@
 //go:build integration
 // +build integration
 
-package version
+package version_test
 
 import (
 	"fmt"
